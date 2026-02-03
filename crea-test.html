@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creador de Test</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="cabecera-principal">
+    <div class="botones-izquierda">
+      <a href="index.html" class="boton-cabecera">Inicio</a>
+    </div>
+
+
+    <div class="centro-cabecera">
+      <a href="https://tu-pagina.com" target="_blank" class="enlace-pagina-principal">Página Personal</a>
+      <a href="ayuda.html" class="boton-cabecera boton-centrado">Ayuda</a>
+    </div>
+  </div>
+
+
+  <div class="contenedor">
+    <h1>Crear Nuevo Test</h1>
+    
+    <div class="form-preguntas">
+      <label for="titulo-test">Título del Test:</label>
+      <input type="text" id="titulo-test" placeholder="Nombre del test">
+    </div>
+    
+    <div class="editor-pregunta">
+      <h2>Añadir Pregunta</h2>
+      
+      <div class="form-preguntas">
+        <label for="pregunta">Pregunta:</label>
+        <input type="text" id="pregunta" placeholder="Escribe tu pregunta aquí">
+      </div>
+      
+      <div id="contenedor-respuestas"></div>
+      <button onclick="anadirRespuesta()" class="boton">Añadir Respuesta</button>
+      
+      <div class="acciones">
+        <button onclick="guardarPregunta()" class="boton">Guardar Pregunta</button>
+        <button onclick="generarTest()" class="boton primario">Guardar Test</button>
+      </div>
+    </div>
+    
+    <hr>
+    
+    <h2>Preguntas Guardadas</h2>
+    <div id="lista-preguntas"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

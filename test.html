@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resolver Test</title>
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+<div id="cabecera-principal">
+    <div class="botones-izquierda">
+      <a href="index.html" class="boton-cabecera">Inicio</a>
+    </div>
+
+
+    <div class="centro-cabecera">
+      <a href="https://tu-pagina.com" target="_blank" class="enlace-pagina-principal">Página Personal</a>
+      <a href="ayuda.html" class="boton-cabecera boton-centrado">Ayuda</a>
+    </div>
+  </div>
+
+
+
+  <!-- Mensaje de advertencia para preguntas sin responder -->
+  <div id="mensaje-advertencia">
+    <div class="contenido-advertencia">
+      <h2>¡Atención!</h2>
+      <p id="texto-advertencia">Tienes <span id="conteo-sin-responder">0</span> pregunta(s) sin responder.</p>
+      <p>¿Estás seguro de que deseas finalizar el test?</p>
+      <div class="acciones-advertencia">
+        <button id="confirmar-finalizar" class="boton primario">Sí, finalizar</button>
+        <button id="cancelar-finalizar" class="boton secundario">No, continuar</button>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="contenedor">
+    <h1>Resolver Test</h1>
+
+
+    <div id="seccion-carga" class="visible">
+      <div class="form-preguntas">
+        <label for="archivo-test">Selecciona archivo de test (.json):</label>
+        <input type="file" id="archivo-test" accept=".json" />
+      </div>
+
+
+      <div class="form-preguntas">
+        <label>
+          <input type="checkbox" id="mezclar-preguntas" /> Ordenar preguntas aleatoriamente
+        </label>
+      </div>
+
+
+      <!-- Opciones de puntuación -->
+      <div class="puntuaciones">
+        <h3>Opciones de puntuación:</h3>
+
+
+        <div class="opcion-puntuacion">
+          <input type="radio" id="puntuacion-porcentaje" name="modo-puntuacion" value="porcentaje" checked />
+          <label for="puntuacion-porcentaje">Modo Sin Penalización</label>
+        </div>
+
+
+        <div class="opcion-puntuacion">
+          <input type="radio" id="puntuacion-penalizacion" name="modo-puntuacion" value="penalizacion" />
+          <label for="puntuacion-penalizacion">Modo Con Penalización</label>
+          <div class="control-penalizacion" id="control-penalizacion" style="display: none;">
+            <input type="number" id="factor-penalizacion" min="1" value="2" max="10" />
+            <label>respuestas incorrectas restan 1 respuesta correcta</label>
+          </div>
+        </div>
+      </div>
+
+
+      <button id="iniciar-test" class="boton primario" disabled>Iniciar Test</button>
+    </div>
+
+
+    <div id="seccion-test" class="oculto">
+      <h2 id="visualizacion-titulo-test"></h2>
+      <div class="progreso">
+        Pregunta <span id="pregunta-actual">1</span> de <span id="total-preguntas">0</span>
+      </div>
+
+
+      <div id="contenedor-pregunta">
+        <h3 id="texto-pregunta"></h3>
+        <div id="lista-respuestas"></div>
+      </div>
+
+
+      <!-- Barra de preguntas -->
+      <div id="barra-preguntas" class="barra-preguntas"></div>
+
+
+      <!-- Botones de navegación -->
+      <div class="navegacion">
+        <div class="botones-navegacion">
+          <button id="boton-anterior" class="boton">←</button>
+          <button id="boton-siguiente" class="boton">→</button>
+        </div>
+        <button id="boton-finalizar" class="boton secundario">Finalizar Test</button>
+      </div>
+    </div>
+
+
+    <div id="seccion-resultados" class="oculto">
+      <h2>Resultados del Test</h2>
+      <div class="puntuacion">
+        Aciertos: <span id="respuestas-correctas">0</span>
+      </div>
+      <div class="puntuacion">
+        Fallos: <span id="respuestas-incorrectas">0</span>
+      </div>
+      <div class="puntuacion">
+        Sin responder: <span id="respuestas-sin-responder">0</span>
+      </div>
+
+
+      <div class="nota-final">
+        Nota final: <span id="nota-final">0</span>/10
+      </div>
+
+
+      <button onclick="reiniciarTest()" class="boton primario">Hacer otro test</button>
+      <button id="boton-mostrar-resumen" onclick="mostrarResumen()" class="boton secundario">Ver Resumen</button>
+      <a href="index.html" class="boton secundario">Volver al inicio</a>
+    </div>
+
+
+    <!-- Sección para mostrar resumen -->
+    <div id="seccion-resumen" class="oculto">
+      <h2>Resumen del Test</h2>
+      <div id="lista-resumen"></div>
+      <button onclick="mostrarSeccionResultados()" class="boton primario">Volver a resultados</button>
+    </div>
+  </div>
+
+
+  <script>
+    // Control para mostrar/ocultar opción de penalización
+    document.addEventListener("DOMContentLoaded", function () {
+      const radioPenalizacion = document.getElementById("puntuacion-penalizacion");
+      const controlPenalizacion = document.getElementById("control-penalizacion");
+
+
+      radioPenalizacion.addEventListener("change", function () {
+        controlPenalizacion.style.display = this.checked ? "flex" : "none";
+      });
+
+
+      document
+        .getElementById("puntuacion-porcentaje")
+        .addEventListener("change", function () {
+          controlPenalizacion.style.display = "none";
+        });
+
+    });
+  </script>
+
+
+  <script src="test-script.js"></script>
+</body>
+</html>

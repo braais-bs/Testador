@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ayuda!!</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="cabecera-principal">
+    <div class="botones-izquierda">
+      <a href="index.html" class="boton-cabecera">Inicio</a>
+    </div>
+
+    <div class="centro-cabecera">
+      <a href="https://tu-pagina.com" target="_blank" class="enlace-pagina-principal">Página Personal</a>
+      <a href="ayuda.html" class="boton-cabecera boton-centrado">Ayuda</a>
+    </div>
+  </div>
+
+  <div class="contenedor">
+    <h1>Preguntas Frecuentes</h1>
+
+    <div class="faq-contenedor">
+      
+      <!-- FAQ 1: Formato de archivos -->
+      <div class="faq-item">
+        <button class="faq-pregunta" onclick="alternarFAQ(this)">
+          <span>¿Y si el test a crear es demasiado largo?</span>
+          <span class="faq-icono">▼</span>
+        </button>
+        <div class="faq-respuesta">
+          <p>En caso de que el test sea muy grande y sea muy engorroso crearlo desde la propia app, se puede crear un archivo JSON con la siguiente estructura:</p>
+          
+          <pre class="codigo-ejemplo">
+{
+  "title": "<span class="texto-personalizable">Test Ejemplo</span>",
+  "questions": [
+    {
+      "question": "<span class="texto-personalizable">Pregunta 1</span>",
+      "answers": [
+        "<span class="texto-personalizable">Respuesta A</span>",
+        "<span class="texto-personalizable">Respuesta B</span>"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "<span class="texto-personalizable">Pregunta 2</span>",
+      "answers": [
+        "<span class="texto-personalizable">Respuesta A</span>",
+        "<span class="texto-personalizable">Respuesta B</span>"
+      ],
+      "correct": 1
+    }
+  ]
+}</pre>
+
+
+          <div class="nota-importante">
+            <strong>Importante:</strong>
+            <ul>
+              <li>El campo <strong>"correct"</strong> indica el índice de la respuesta correcta (empieza en 0)</li>
+              <li>Solo se permitirá una respuesta correcta por cada pregunta</li>
+              <li>Todas las preguntas deben tener al menos 2 respuestas</li>
+              <li>Los campos en verde son los únicos que deben de modificarse</li>
+              <li>El archivo debe tener extensión <strong>.json</strong></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ 2: Modos de puntuación -->
+      <div class="faq-item">
+        <button class="faq-pregunta" onclick="alternarFAQ(this)">
+          <span>¿Como funcionan los modos de puntuación?</span>
+          <span class="faq-icono">▼</span>
+        </button>
+        <div class="faq-respuesta">
+          <p><strong>Hay dos modos disponibles:</strong></p>
+          <ul>
+            <li><strong>Sin Penalización:</strong> Solo cuentan las respuestas correctas. Las incorrectas no restan puntos.</li>
+            <li><strong>Con Penalización:</strong> Las respuestas incorrectas restan puntos. Puedes configurar cuántas respuestas incorrectas restan 1 punto.</li>
+          </ul>
+          <div class="nota-importante">
+            <strong>Ejemplo:</strong>
+            <p>Test de 12 preguntas, aciertas 8 y fallas 4 con penalización de 2:</p>
+            <p>Nota = (8 - 4/2) × (10/12) = 6 × 0.83 = <strong>5.00 puntos</strong></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ 3: Ordenar preguntas aleatoriamente -->
+      <div class="faq-item">
+        <button class="faq-pregunta" onclick="alternarFAQ(this)">
+          <span>¿Y si quiero hacerlo un poco más dificil?</span>
+          <span class="faq-icono">▼</span>
+        </button>
+        <div class="faq-respuesta">
+          <p>Si al hacer el test en el mismo orden te acuerdas antes de la posición de la respuesta correcta que de cual es y por qué, existe la opción <strong>"Ordenar preguntas aleatoriamente"</strong> que cambia el orden de las preguntas cada vez que inicias el test.</p>
+        </div>
+      </div>
+
+      <!-- FAQ 4: Navegación y funcionamiento del test -->
+      <div class="faq-item">
+        <button class="faq-pregunta" onclick="alternarFAQ(this)">
+          <span>¿Si no me se una pregunta podre volver atrás para responderla?</span>
+          <span class="faq-icono">▼</span>
+        </button>
+        <div class="faq-respuesta">
+          <p><strong>¡Sí! El tiempo es ilimitado, por lo que si no sabes la respuesta a una pregunta, siempre puedes pasar a la siguiente y volver más tarde. Puedes navegar por las preguntas del test sin limitación.</strong></p>
+          <div class="nota-importante">
+          <p>Tienes varias formas de moverte:</p>
+          <ul>
+            <li>Usa las flechas <strong>← →</strong> para ir a la pregunta anterior/siguiente</li>
+            <li>Pulsa cualquier número en la <strong>barra de preguntas</strong> para ir directamente a esa pregunta</li>
+            <li>Las preguntas respondidas se marcan en <strong>verde</strong> en la misma barra</li>
+            <li>Las preguntas no respondidas aparecen sin destacar en la misma barra</li>
+            <li>La pregunta actual se <strong>destaca</strong> y marca en <strong>azul</strong> (o en verde si ya se respondió)</li>
+          </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ 5: Ver resumen -->
+      <div class="faq-item">
+        <button class="faq-pregunta" onclick="alternarFAQ(this)">
+          <span>¿Como puedo saber que preguntas fallé?</span>
+          <span class="faq-icono">▼</span>
+        </button>
+        <div class="faq-respuesta">
+          <p>Al terminar cada test, aparecen los resultados. Desde ahí, puedes acceder a un resumen con <strong>todas las preguntas del test</strong>.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="margin-top: 40px; text-align: center;">
+      <a href="index.html" class="boton primario">Volver al inicio</a>
+    </div>
+  </div>
+
+  <script>
+    function alternarFAQ(elemento) {
+      const respuesta = elemento.nextElementSibling;
+      const esActiva = elemento.classList.contains('activa');
+      
+      // Cerrar todas las FAQs
+      document.querySelectorAll('.faq-pregunta').forEach(pregunta => {
+        pregunta.classList.remove('activa');
+        pregunta.nextElementSibling.classList.remove('abierta');
+      });
+      
+      // Si no estaba activa, abrirla
+      if (!esActiva) {
+        elemento.classList.add('activa');
+        respuesta.classList.add('abierta');
+      }
+    }
+  </script>
+</body>
+</html>
